@@ -1,3 +1,45 @@
+### checkout how use of dummy pointer is used here to make code look cleaner
+#### Logic is same 
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+
+        curr = head
+        copy_head = Node(-1)
+        copy_curr = copy_head
+        lookup = {}
+
+        while curr:
+            copy_curr.next = Node(curr.val)  
+            lookup[curr] = copy_curr.next
+            copy_curr.next.random = curr.random
+            curr = curr.next
+            copy_curr = copy_curr.next
+        
+        temp = copy_head.next
+
+        while temp:
+            if temp.random != None:
+                temp.random = lookup[temp.random]
+            temp = temp.next
+    
+        return copy_head.next        
+
+
+        
+
+
+
+##############################################################################
+
 """
 # Definition for a Node.
 class Node:
