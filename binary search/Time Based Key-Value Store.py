@@ -7,6 +7,7 @@ class TimeMap:
         ans = ""
         while left<=right:
             middle = (left+right)//2
+            #### if target is target the midddle than atleast middle is the value we want
             if self.lookup[key][middle][0]<=target:
                 ans = self.lookup[key][middle][1]
                 left = middle+1
