@@ -1,25 +1,25 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        
 
-        left, right = 1, max(piles)
-        ans = right
+        def feasible(mid):
 
-        while left<=right:
+            minH = 0
+            for pile in piles:
+                temp = ceil(pile/mid)
+                minH+=temp
+            if minH<=h:
+                return True    
+             
 
-            hours = 0
-            middle = (left+right)//2
+        left,right = 1,max(piles)
 
-            for p in piles:
-                hours+=math.ceil(p / middle)
+        while left<right:
+            mid = left+(right-left)//2
 
-            if hours<=h:
-                ans = min(ans,middle)
-                right = middle-1
+            if feasible(mid):
+                right = mid
             else:
-                left = middle+1
+                left = mid+1
 
-        return ans                
-
-
-
-    
+        return left            
