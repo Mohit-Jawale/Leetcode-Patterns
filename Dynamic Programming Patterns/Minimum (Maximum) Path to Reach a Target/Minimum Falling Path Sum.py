@@ -25,3 +25,25 @@ class Solution:
             ans = min(dfs(len(matrix)-1,k),ans)
 
         return ans            
+
+### DP solution bottom up-
+class Solution:
+    def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+        
+        m = len(matrix)
+        n = len(matrix[0])
+
+        for i in range(0,m):
+            for j in range(0,n):
+                
+                if i==0:
+                    continue
+                elif j==0:
+                    matrix[i][j]=min(matrix[i-1][j],matrix[i-1][j+1])+ matrix[i][j]
+                elif j==n-1:
+                    matrix[i][j]=min(matrix[i-1][j],matrix[i-1][j-1])+ matrix[i][j]
+                else:
+                    matrix[i][j]=min(matrix[i-1][j],matrix[i-1][j-1],matrix[i-1][j+1])+ matrix[i][j]
+
+        return min(matrix[m-1])            
+
