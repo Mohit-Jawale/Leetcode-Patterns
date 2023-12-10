@@ -26,18 +26,19 @@ class Solution:
 
 
         return dfs(target,n)%(pow(10,9)+7)
+        
  ## 2d - DP
-        dp = [[0 for _ in range(target+1)] for _ in range(n+1)]
+dp = [[0 for _ in range(target+1)] for _ in range(n+1)]
 
-        dp[0][0]=1
-        MOD = pow(10,9)+7
+dp[0][0]=1
+MOD = pow(10,9)+7
 
-        for i in range(1,len(dp)):
-            for j in range(1,len(dp[0])):
-                for p in range(1,k+1):
-                    if (j-p)>=0:
-                        dp[i][j] += dp[i-1][j-p]%(MOD)
+for dice in range(1,len(dp)):
+    for t in range(1,len(dp[0])):
+        for p in range(1,k+1):
+            if (t-p)>=0:
+                dp[dice][j] += dp[dice-1][t-p]%(MOD)
 
 
-        return dp[-1][-1]%MOD           
+return dp[-1][-1]%MOD           
 
