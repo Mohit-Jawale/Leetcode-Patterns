@@ -41,3 +41,20 @@ class Solution:
         
         return dp[0][target]
 
+### After realizing in dfs there is only one variable needed it seems like the 1d dp problem
+### so only removing what is not needed from above solution
+
+
+        dp = [0] * (target+1)
+  
+        dp[0]=1
+
+        for t in range(1,len(dp)):
+            for k in range(len(nums)):
+                if t-nums[k]>=0:
+                    dp[t]+=dp[t-nums[k]]
+    
+        
+        return dp[target]
+
+
