@@ -1,5 +1,6 @@
 ### There are multiple concepts involved like LCS,printing LCS, and modified LCS
 ### This is good problem to understand lots of concpets related to LCS
+### If lost while reading the solution print the LCS table and trace the LCS from 0,0 
 class Solution:
     def shortestCommonSupersequence(self, str1: str, str2: str) -> str:
 
