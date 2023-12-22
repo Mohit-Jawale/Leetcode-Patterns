@@ -28,6 +28,25 @@ class Solution:
             return profit
         
         return dfs(0,True)
+        
+### 2d -dp
+        n = len(prices)
+        dp = [[0 for _ in range(2)] for _ in range(n+1)]
+
+        for i in reversed(range(n)):
+            for buy in range(2):
+                if buy == 1:
+                    ### decide to buy
+                    profit = -prices[i]+dp[i+1][0]
+                    skipBuy = dp[i+1][1]
+                    dp[i][buy] = max(profit,skipBuy)
+                else:
+                    ### decide to sell
+                    profit = prices[i]+dp[i+1][1]
+                    skipSell = dp[i+1][0]
+                    dp[i][buy] = max(profit,skipSell)
+        
+        return dp[0][1]
 
 
         
