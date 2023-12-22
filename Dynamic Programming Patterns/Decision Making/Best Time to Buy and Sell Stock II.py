@@ -47,6 +47,26 @@ class Solution:
                     dp[i][buy] = max(profit,skipSell)
         
         return dp[0][1]
+### space optimization
+        sellNext,buyNext = 0, 0
+        sellCurr,buyCurr = 0,0
+
+        for i in reversed(range(n)):
+            for buy in range(2):
+                if buy == 1:
+                    ### decide to buy
+                    profit = -prices[i]+ sellNext
+                    skipBuy = buyNext
+                    buyCurr = max(profit,skipBuy)
+                else:
+                    ### decide to sell
+                    profit = prices[i]+buyNext
+                    skipSell = sellNext
+                    sellCurr = max(profit,skipSell)
+            
+            sellNext,buyNext = sellCurr,buyCurr
+
+        return buyCurr
 
 
         
