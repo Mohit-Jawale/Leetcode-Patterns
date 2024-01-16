@@ -7,41 +7,27 @@
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
 
-        ans = True
 
-        def same_tree(node1,node2):
+        def dfs(node,subNode):
 
-            nonlocal ans
-
-            if not node1 and not node2:
-                return
-
-            if not node1 or not node2:
-                ans = False
-                return
-
-            if node1.val != node2.val:
-                ans = False  
-
-            same_tree(node1.left,node2.left)
-            same_tree(node1.right,node2.right)
-
+            if not node and not subNode:
+                return True
+            if not node or not subNode:
+                return False
+            if node.val != subNode.val:
+                return False
+            
+            return dfs(node.left,subNode.left) and dfs(node.right,subNode.right)
         
-        if not subRoot:
-            return True
+
         if not root:
             return False
-
-        same_tree(root,subRoot)
-        if ans == True:
-            return ans
-        return (self.isSubtree(root.left,subRoot) or self.isSubtree(root.right,subRoot))   
-
-        return False       
-                
+        if dfs(root,subRoot):
+            return True
+        else:
+            return self.isSubtree(root.left,subRoot) or self.isSubtree(root.right,subRoot)
 
 
 
-
-
+        
         
