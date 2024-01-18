@@ -6,10 +6,11 @@ class Solution:
         res = []
 
         for index,target in enumerate(nums):
-            
+
+            #### only negative number and make the total zero
             if target>0:
                 break
-
+            ### for avoiding duplicates
             if index>0 and nums[index]==nums[index-1]:
                 continue
             
@@ -23,6 +24,7 @@ class Solution:
                     right-=1
                 else:
                     res.append([nums[left],nums[right],target])
+                    ### if the remaining array has one more pair and to avoid duplicate pair
                     left+=1
                     while nums[left]==nums[left-1] and left<right:
                         left+=1
