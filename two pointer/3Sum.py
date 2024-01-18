@@ -1,37 +1,32 @@
-class Solution(object):
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        def two_sum(target,i):
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
 
-            left,right = i+1,len(nums)-1
-            ans = set()
-
-            while left<right:
-                if (nums[left]+nums[right])<target:
-                    left+=1
-                elif(nums[left]+nums[right])>target:
-                    right-=1
-                else:
-                    ans.add((i,left,right))
-                    left+=1
-                    right-=1
-
-            return ans            
-
-
+        
         nums.sort()
         res = []
 
-        for index,num in enumerate(nums):
+        for index,target in enumerate(nums):
             
-            ans = two_sum(-nums[index],index)
-            if ans:
-                for j in ans:
-                    temp = (nums[j[0]],nums[j[1]],nums[j[2]])
-                    if temp not in res :
-                        res.append(temp)
+            if target>0:
+                break
 
-        return list(res)            
+            if index>0 and nums[index]==nums[index-1]:
+                continue
+            
+            left,right = index+1,len(nums)-1
+   
+         
+            while left<right:
+                if nums[left]+nums[right]<-target:
+                    left+=1
+                elif nums[left]+nums[right]>-target:
+                    right-=1
+                else:
+                    res.append([nums[left],nums[right],target])
+                    left+=1
+                    while nums[left]==nums[left-1] and left<right:
+                        left+=1
+
+
+        return res 
+
