@@ -20,8 +20,12 @@ class Solution:
                     return removeRedundantNode(node.right)
                 elif node.val>high:
                     return removeRedundantNode(node.left)
-                else:
-                    return None
+
             return node
 
         return removeRedundantNode(root)
+
+
+
+
+        
