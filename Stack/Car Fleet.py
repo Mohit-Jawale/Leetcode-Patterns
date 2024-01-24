@@ -13,7 +13,7 @@ class Solution:
 
         for p,s in sorted(pair)[::-1]:
             stack.append((target-p)/s)
-            if len(stack)>=2 and stack[-1]<=stack[-2]:
+            if len(stack)>=2 and stack[-1]<=stack[-2]:### this means if some car is reaching before top then they must have meet and become fleet before
                 stack.pop()
 
         return len(stack)        
