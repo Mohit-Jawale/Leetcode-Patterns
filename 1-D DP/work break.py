@@ -1,6 +1,7 @@
 #### dfs + memo
 ### This solution is reserved of how we implement dp is from the dict to s rather than s to wordict
-
+###https://leetcode.com/problems/word-break/solutions/3766655/a-general-template-solution-for-dp-memoization/  
+### refer this for dfs +memo solution
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
 
