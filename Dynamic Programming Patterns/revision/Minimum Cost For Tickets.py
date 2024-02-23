@@ -27,10 +27,25 @@ class Solution:
         return dfs(0,0)
 
 
+#### be careful about the overflows
+    dp = [float('inf')] * (days[-1]+1)
+    dp+=[0]
+    daysset = set(days)
+
+    for i in reversed(range(days[-1]+1)):
+        for j in range(len(costs)):
+            if i in daysset:
+                nextPass = min(i+dayMapping[j],days[-1]+1)
+                dp[i] = min(dp[nextPass]+costs[j],dp[i])
+            else:
+                dp[i]=dp[i+1]
+    
+    return dp[0]
+
 
 ##### to use the currPAss<=i condition as it is we reverse the sign of dfs call in dp
 
-    dp = [float('inf')]*(days[-1]+1)
+        dp = [float('inf')]*(days[-1]+1)
         dayset = set(days)
         dp[0]=0
         currPass = 0
