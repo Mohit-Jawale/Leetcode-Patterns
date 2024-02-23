@@ -28,7 +28,7 @@ class Solution:
 
 
 
-
+##### to use the currPAss<=i condition as it is we reverse the sign of dfs call in dp
 
     dp = [float('inf')]*(days[-1]+1)
         dayset = set(days)
