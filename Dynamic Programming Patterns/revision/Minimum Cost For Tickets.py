@@ -27,6 +27,25 @@ class Solution:
         return dfs(0,0)
 
 
+
+
+
+    dp = [float('inf')]*(days[-1]+1)
+        dayset = set(days)
+        dp[0]=0
+        currPass = 0
+        for i in range(1,days[-1]+1):
+            for k in range(len(costs)):
+                if i in dayset and currPass<=i:
+                    currPass = i-dayMapping[k]
+                    dp[i] = min( dp[max(0,currPass)] + costs[k],dp[i])
+                else:
+                    dp[i] = dp[i-1]
+
+        return dp[-1]
+
+
+
         
         
 
