@@ -2,6 +2,31 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         
+
+        partitions= []
+        substring = []
+
+        def dfs(s,substring):
+
+            if len(s)==0:
+                partitions.append(copy.deepcopy(substring))
+                return
+
+            for k in range(len(s)):
+                substring.append(s[:k+1])
+                if substring[-1]==substring[-1][::-1]:
+                    dfs(s[k+1:],substring)
+                substring.pop()
+
+        
+        dfs(s,substring)
+        return partitions
+
+
+
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        
         ans = []
 
         def dfs(k,substrings):
