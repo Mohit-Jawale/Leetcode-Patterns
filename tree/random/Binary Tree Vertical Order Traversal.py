@@ -1,3 +1,4 @@
+#### imagine there is number line with root at 0, for left -1 and for right +1 dist way as we traverse the tree
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
