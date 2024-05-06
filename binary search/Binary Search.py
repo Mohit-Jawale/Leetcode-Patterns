@@ -30,7 +30,7 @@ class Solution:
         while left<right:
             mid = (left+right)//2
 
-            if nums[mid]<=target:
+            if nums[mid]<=target: ### find the num in the array where target is grt than eq to number.
                 left = mid+1
             else:
                 right = mid
@@ -46,7 +46,7 @@ left,right = 0,len(nums)
 while left<right:
     mid = (left+right)//2
 
-    if nums[mid]>=target:
+    if nums[mid]>=target: ### find the number in the array where target is less than or eq to the number.
         right = mid
     else:
         left = mid+1
