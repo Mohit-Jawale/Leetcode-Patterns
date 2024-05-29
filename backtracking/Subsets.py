@@ -1,21 +1,24 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
-        ans = []
-        ans.append([])
-        
-        def dfs(k,subset):
 
+        ans = [[]]
+
+
+        def dfs(i,subset):
             nonlocal ans
-            if k==len(nums):
+            if i>=len(nums):
                 return
 
-            for num in nums[k:]:
-                temp = subset+[num]
+            for k in range(i,len(nums)):
+                temp = subset + [nums[k]]
                 ans.append(temp)
                 dfs(k+1,temp)
-                k+=1
-
+        
 
         dfs(0,[])
         return ans
+             
+
+
+
+        
