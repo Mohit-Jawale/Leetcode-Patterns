@@ -2,29 +2,24 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 
         ans = []
-        candidates.sort()
 
 
-        def dfs(sum,combination,k):
 
-            if sum>target:
+        def dfs(i,combiSet,total):
+
+            nonlocal ans
+
+            if i>=len(candidates) or total>target:
                 return
-            if sum == target:
-                ans.append(combination)  
+            if total == target:
+                ans.append(combiSet)
                 return
-
-            for candidate in candidates[k:]:
-                sum+=candidate
-                nextCandidate = combination + [candidate]
-                if sum>target:
-                    break
-                dfs(sum,nextCandidate,k)
-                sum-=candidate
-                k+=1
-
-
-        dfs(0,[],0)
-        return ans        
-
+            
+            for k in range(i,len(candidates)):
+                temp = combiSet+[candidates[k]]
+                dfs(k,temp,total+candidates[k])
+                
 
         
+        dfs(0,[],0)
+        return ans
