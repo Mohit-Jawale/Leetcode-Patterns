@@ -1,28 +1,27 @@
 class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
 
-        visited =set()
-        ans = []
-        ans.append([])
+
+        ans = [[]]
         nums.sort()
 
-        def dfs(subset,k):
+        def dfs(i,subset):
+            
+            nonlocal ans
 
-            if k==len(nums):
+            if i>=len(nums):
                 return
-
-            for num in nums[k:]:
-                temp = subset+[num]
-                if tuple(temp) in visited:
-                    k+=1
+            
+            for k in range(i,len(nums)):
+                if k>i and nums[k]==nums[k-1]:
                     continue
-                ans.append(temp)    
-                visited.add(tuple(temp))    
-                dfs(temp,k+1)
-                k+=1
-
-
-        dfs([],0)
+                temp = subset+[nums[k]]
+                ans.append(temp)
+                dfs(k+1,temp)
+        
+        dfs(0,[])
         return ans
 
-        
+            
+
+                 
