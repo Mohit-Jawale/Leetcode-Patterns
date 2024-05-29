@@ -1,33 +1,32 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
 
-        candidates.sort()
+
         ans = []
-        visited = set()
+        candidates.sort()
+        
 
+        def dfs(i,combiSet,total):
 
-        def dfs(sum,k,combination):
-            
-            if sum>target:
+                        
+            if total == target:
+                ans.append(combiSet)
+                return
+                
+            if i>=len(candidates) or total>target:
                 return
 
-            if sum == target:
-                ans.append(combination)
-                return 
+            
 
-            for candidate in candidates[k:]:
-                nextCandidate = combination+[candidate] 
-                if tuple(nextCandidate) in visited:
-                    k+=1
+            for k in range(i,len(candidates)):
+                if k>i and candidates[k-1]==candidates[k]:
                     continue
-                visited.add(tuple(nextCandidate))
-                sum+=candidate
-                dfs(sum,k+1,nextCandidate)
-                sum-=candidate
-                k+=1
+                temp = combiSet + [candidates[k]]
+                dfs(k+1,temp,total+candidates[k])
 
-        dfs(0,0,[])
-        return ans               
-
+                
         
+        dfs(0,[],0)
+        return ans
+
         
