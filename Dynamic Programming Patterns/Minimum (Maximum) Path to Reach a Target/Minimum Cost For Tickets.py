@@ -1,3 +1,25 @@
+class Solution:
+    def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+
+        maxDay = days[-1]
+        minDay = days[0]
+        days = set(days)
+        memo = {}
+        
+        dp = [float('inf')]*(maxDay+31)
+                for i in range(len(dp)):
+                    if i>maxDay:
+                        dp[i]=0
+        
+                for day in reversed(range(maxDay+1)):
+                    if day not in days:
+                        dp[day]= dp[day+1]
+                    else:
+                        for index,i in enumerate([1,7,30]):
+                            dp[day]=min(dp[day+i]+costs[index],dp[day])
+        
+        return dp[minDay]
+        
 
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
