@@ -1,6 +1,7 @@
 class Solution:
     def leadsToDestination(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        
+        ### this question has lots of tweeking of topo sort good question
+
 
         indegree = defaultdict(int)
         adjList = defaultdict(list)
