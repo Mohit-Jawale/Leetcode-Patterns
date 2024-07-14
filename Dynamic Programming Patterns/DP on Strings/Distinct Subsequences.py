@@ -28,6 +28,24 @@ class Solution:
             return totalUniqueWays
 
 
-        return dfs(0,0)       
+        return dfs(0,0) 
+
+
+#### 2d -DP
+
+        dp = [[0 for _ in range(n+1)] for _ in range(m+1)]
+
+        for i in range(m+1):
+            dp[i][n]=1
+        
+        for i in reversed(range(m)):
+            for j in reversed(range(n)):
+                if s[i]==t[j]:
+                    dp[i][j] = dp[i+1][j+1]+dp[i+1][j]
+                else:
+                    dp[i][j] = dp[i+1][j]
+        
+        return dp[0][0]
+            
 
 
