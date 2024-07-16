@@ -27,18 +27,18 @@ class Solution:
         return dfs(n)
 
 ### 1d -dp
-        dp = [0] * (n+1)
 
-        dp[0]=dp[1]=1
+        dp = [0]*(n+1)
+        dp[0] = dp[1] = 1
 
-        for i in range(2,n+1):
+        for nodes in range(2,n+1):
             total = 0
-            for j in range(1,i+1):
-                left = j-1
-                right = i-j
-                total+= dp[left]*dp[right]
-            dp[i] = total    
+            for root in range(1,nodes+1):
+                total+=dp[root-1]*dp[nodes-root]
+            dp[nodes] = total
 
-        return dp[n]   
+        return dp[n]
+            
+ 
 
         
