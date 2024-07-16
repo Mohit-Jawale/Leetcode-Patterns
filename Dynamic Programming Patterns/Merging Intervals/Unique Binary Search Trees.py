@@ -1,6 +1,8 @@
 ## Dfs+memo
 ## we are multipling bcz we have to find out total ways of arrange x and y items together.
 
+### neetcode video is good for the intuition
+
 class Solution:
     def numTrees(self, n: int) -> int:
 
