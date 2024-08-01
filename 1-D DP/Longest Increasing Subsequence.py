@@ -38,6 +38,24 @@ class Solution:
             for j in range(i+1,len(nums)):
                 if nums[j]>nums[i]:
                     LIS[i] = max(LIS[i],1+LIS[j])
+#### binary search
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+
+        LIS = []
+
+        for num in nums:
+            if len(LIS)==0 or LIS[-1]<num:
+                LIS.append(num)
+            else:
+                index=bisect_left(LIS,num)
+                print(index)
+                LIS[index]=num
+        
+        return len(LIS)
+
+        
 
 
         return max(LIS)        
