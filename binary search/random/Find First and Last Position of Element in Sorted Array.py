@@ -24,12 +24,12 @@ class Solution:
 
             return i
         
-        # ## Lowerbound
-        # ans[0]= binarySearchBais(0,len(nums)-1,True)
-        # # upperbound
-        # ans[1] = binarySearchBais(0,len(nums)-1,False)
+        ## Lowerbound
+        ans[0]= binarySearchBais(0,len(nums)-1,True)
+        # upperbound
+        ans[1] = binarySearchBais(0,len(nums)-1,False)
 
-        # return ans
+        return ans
 
         # ans  = [-1,-1]
         # ## lower bound
