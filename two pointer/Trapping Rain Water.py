@@ -9,7 +9,7 @@ class Solution:
 
         while left<right:
             
-            if leftMax<rightMax:
+            if leftMax<rightMax: ### why move left when rightmax is grt bcz imagine [1,0,2] here if we move right we dont know if there is grt vaalue to left to give min height
                 left+=1
                 leftMax = max(leftMax,height[left])
                 res += leftMax-height[left]
