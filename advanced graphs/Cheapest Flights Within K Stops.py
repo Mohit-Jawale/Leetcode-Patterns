@@ -1,18 +1,29 @@
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+        
 
-        prices = [float("INF")]*n
-        prices[src]= 0
+        adjList = collections.defaultdict(list)
 
-        for i in range(k+1):
-            tempPrices = prices.copy()
+        for u,v,w in flights:
+            adjList[u].append((v,w))
 
-            for s,d,w in flights:
-                if prices[s] == float("INF"):
-                    continue
-                if prices[s]+w<tempPrices[d]:
-                    tempPrices[d] = prices[s]+w
+        queue = collections.deque([(src,0,k+1)])
 
-            prices = tempPrices
 
-        return prices[dst] if prices[dst] != float("INF") else -1         
+        dist = [float('inf')]*n
+        dist[src]=0
+
+        while queue:
+
+            node,price,k = queue.popleft()
+
+            for neighbour,cost in adjList[node]:
+                if dist[neighbour]>cost+price and k>0:
+                    dist[neighbour] = cost+price
+                    queue.append((neighbour,dist[neighbour],k-1))
+        
+
+        return dist[dst] if dist[dst] != float('inf') else -1
+
+
+
