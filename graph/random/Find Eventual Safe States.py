@@ -1,3 +1,46 @@
+
+#### its directed and sorted so topo
+
+class Solution:
+    def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
+        
+        n = len(graph)
+        adjList = collections.defaultdict(list)
+        indegree = [0]* n
+
+        for i in range(n):
+            for neighbour in graph[i]:
+                adjList[neighbour].append(i)
+                indegree[i]+=1
+        
+        queue = collections.deque([])
+
+        for index,value in enumerate(indegree):
+            if value==0:
+                queue.append(index)
+        
+        topo = []
+       
+        while queue:
+            node = queue.popleft()
+
+            topo.append(node)
+
+            for neighbour in adjList[node]:
+                indegree[neighbour]-=1
+                if indegree[neighbour]==0:
+                    queue.append(neighbour)
+        
+        topo.sort()
+        return topo
+            
+
+
+        
+        
+
+        
+
 ### This is coloring algorithm to find cycle using 3 colors white,gray,black
 ### white-unvisted,gray-visiting,black-visited
 ### if gray is visited again that means there is cycle
