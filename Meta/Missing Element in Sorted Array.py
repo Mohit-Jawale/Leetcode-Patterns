@@ -2,10 +2,11 @@ class Solution:
     def missingElement(self, nums: List[int], k: int) -> int:
 
 
-        left,right = 0,len(nums)-1
+
+        left,right = 0,len(nums)
         index = -1
 
-        while left<=right:
+        while left<right:
 
             mid = left+ (right-left)//2
 
@@ -14,8 +15,8 @@ class Solution:
             if value<k:
                 left = mid+1
             else:
-                right = mid-1
-                
+                right = mid
+
         ### here left is total elements in the array , k-1 is total missing number
         return nums[0]+left+k-1
 
