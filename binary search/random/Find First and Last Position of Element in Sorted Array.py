@@ -1,6 +1,8 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
+        ### here remember the number is present does nt work if its not present
+
 
         ans = [-1,-1]
 
