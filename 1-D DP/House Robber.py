@@ -1,3 +1,42 @@
+#### dfs+memo
+
+        memo = {}
+
+        def dfs(i):
+
+            if i>=len(nums):
+                return 0
+
+            if i in memo:
+                return memo[i]
+            maxAmount = 0
+            maxAmount = max(dfs(i+2)+nums[i],dfs(i+1))
+
+            memo[i] = maxAmount
+
+            return maxAmount
+        
+
+        return dfs(0)
+
+
+### 1d-dp
+        n = len(nums)
+
+        dp = [0]*(n+2)
+        dp[n] = 0
+
+        for i in reversed(range(n)):
+
+            dp[i]= max(dp[i+2]+nums[i],dp[i+1])
+        
+        return dp[0]
+
+
+
+        
+
+
 ## dfs+memo
 
 class Solution:
