@@ -4,11 +4,9 @@ class Solution:
 
         adjList = collections.defaultdict(set)
 
-        for index,value1 in enumerate(bombs):
-            x1,y1,r1 = value1
+        for index,[x1,y1,r1] in enumerate(bombs):
             adjList[index]
-            for index2,value2 in enumerate(bombs):
-                x2,y2,r2 = value2
+            for index2,[x2,y2,r2] in enumerate(bombs):
                 if index==index2:
                     continue
                 dist = sqrt((x2-x1)**2 + (y2-y1)**2)
@@ -33,3 +31,7 @@ class Solution:
             ans = max(len(dfs(index,set())),ans)
         
         return ans
+
+
+        
+        
