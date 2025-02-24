@@ -98,13 +98,6 @@ cd Leetcode-Patterns
 ```bash
 python Arrays/Two_Pointer.py
 ```
-
-### 🔹 Run All Test Cases
-Each solution follows a **Test-Driven Development (TDD)** approach with test cases included. To run all test cases:
-```bash
-pytest
-```
-
 ---
 
 ## 🎯 Contribution Guidelines
@@ -126,19 +119,12 @@ Contributions are welcome! 🚀 If you'd like to contribute:
 
 ---
 
-## 📖 Resources & References
-- [Leetcode Official](https://leetcode.com/)
-- [GeeksForGeeks](https://www.geeksforgeeks.org/)
-- [Neetcode.io](https://neetcode.io/)
-- [AlgoExpert](https://www.algoexpert.io/)
 
----
+
 
 ## 📬 Contact
 📧 Email: jawalemohit18@gmail.com  
 📌 LinkedIn: [Mohit Jawale](http://www.linkedin.com/in/mohitjawale)  
-📌 GitHub: [@Mohit-Jawale](http://www.github.com/Mohit-Jawale)
-
 ---
 
 ### ⭐ If you find this repository useful, don’t forget to give it a star! ⭐  
