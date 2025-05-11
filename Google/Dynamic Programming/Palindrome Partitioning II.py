@@ -13,15 +13,15 @@ class Solution:
         n = len(s)
         dp = [ [False for _ in range(n+1)] for _ in range(n+1)]
 
-        for i in range(n):
+        for i in range(n): ### this is length one palindrome
             dp[i][i]=True
         
-        for i in range(n-1):
+        for i in range(n-1): #### this is length of two palindrome
 
             if s[i]==s[i+1]:
                 dp[i][i+1]=True
         
-        for length in range(3,len(s)+1):
+        for length in range(3,len(s)+1): ### remaining length if you draw the table you can see the traversal is diagonal
             i=0
             for j in range(length-1,len(s)):
                 if s[i]==s[j] and dp[i+1][j-1]:
