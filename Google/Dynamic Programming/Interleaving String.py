@@ -4,8 +4,14 @@ class Solution:
 
         memo = {}
 
+        if len(s1)+len(s2)!=len(s3):
+            return False
+
 
         def dfs(i,j,k):
+
+            if k==len(s3) :
+                return True
 
             if i>=len(s1):
                 if s2[j:]==s3[k:]:
@@ -22,18 +28,21 @@ class Solution:
             if (i,j) in memo:
                 return memo[(i,j)]
 
-            one,two = False,False
+            if s1[i]==s3[k] and s2[j]==s3[k]:
 
-            if i<len(s1) and k<len(s3) and s1[i]==s3[k] :
-                one = memo[(i,j)] = dfs(i+1,j,k+1)
-                
+                memo[(i,j)] =  dfs(i+1,j,k+1) or dfs(i,j+1,k+1)
+                return memo[(i,j)]
+
+            if s1[i]==s3[k] and s2[j]!=s3[k]:
+                memo[(i,j)] = dfs(i+1,j,k+1)
+                return memo[(i,j)]
             
-            if j<len(s2) and k<len(s3) and s2[j]==s3[k]:
-                two = dfs(i,j+1,k+1)
-                
-            memo[(i,j)] = one or two
+            if s2[j]==s3[k] and s1[i]!=s3[k]:
+                memo[(i,j)] = dfs(i,j+1,k+1)
+                return memo[(i,j)]
+
             
-            return memo[(i,j)]
+            return False
 
 
         return dfs(0,0,0)
