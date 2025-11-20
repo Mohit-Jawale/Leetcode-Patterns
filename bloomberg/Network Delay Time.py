@@ -7,23 +7,22 @@ class Solution:
             adj_list[s].append((d,w))
 
         minHeap = [(0,k)]
-        visited = set()
-        t = 0
+        visited = [float('inf')]*(n+1)
+        visited[k] = 0
 
         while minHeap:
 
-            w1,node = heapq.heappop(minHeap)
-            
-            if node in visited:## this is imp
-                continue
+            w1,node = heapq.heappop(minHeap)           
 
-            visited.add(node)
-            t = max(w1,t)
-            for neighbour in adj_list[node]:
-                if neighbour[0] not in visited:
-                    heapq.heappush(minHeap,(w1+neighbour[1],neighbour[0]))
+            for neighbour,weight in adj_list[node]:
 
-        return t if len(visited)==n else -1           
+                if weight+w1<visited[neighbour]:
+                    heapq.heappush(minHeap,(w1+weight,neighbour))
+                    visited[neighbour] = weight+w1
+
+        visited[0]=-1
+        ans = max(visited)   
+        return ans if ans!=float('inf') else -1 
 
 
 
