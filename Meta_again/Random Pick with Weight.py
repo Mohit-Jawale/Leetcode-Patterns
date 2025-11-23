@@ -18,14 +18,15 @@ class Solution:
 
         left,right = 0,len(self.prefix_sum)
 
+        ### lower bound
         while left<right:
 
             mid = left+(right-left)//2
 
-            if target>self.prefix_sum[mid]:
-                left = mid+1
-            else:
+            if self.prefix_sum[mid]>=target:
                 right = mid
+            else:
+                left = mid+1
                 
         return left
 
