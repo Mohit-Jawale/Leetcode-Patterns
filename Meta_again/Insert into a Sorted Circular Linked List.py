@@ -11,7 +11,7 @@ class Solution:
 
         if not head:
             head = Node(val = insertVal)
-            head.next = head
+            head.next = head ##3 edge case to make list circular
             return head
         
         curr = head
@@ -28,7 +28,7 @@ class Solution:
                     break
             
             curr = nxt
-            if curr == head:
+            if curr == head: ### to insert if only one num is there
                 break
 
 
