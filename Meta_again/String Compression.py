@@ -9,7 +9,6 @@ class Solution:
         left,right = 0,1
         ans_ptr = 0
         chars.append("END")
-        chars.append("END")
         N = len(chars)
 
         while right<N:
